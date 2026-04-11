@@ -1,17 +1,130 @@
-{
-  "primaryColor": "#ff0000",
-  "secondaryColor": "#FFB35D",
-  "backgroundColor": "#FFFFFF",
-  "textColor": "#212121",
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Token UI Preview</title>
 
-  "button": {
-    "borderRadius": "8px",
-    "fontSize": "16px",
-    "padding": "12px 24px"
-  },
+  <style>
+    :root {
+      --primary: #000;
+      --secondary: #000;
+      --background: #fff;
+      --text: #000;
+      --btn-radius: 6px;
+      --btn-font-size: 14px;
+      --btn-padding: 10px 16px;
+      --font-family: Arial, sans-serif;
+      --font-weight: 400;
+    }
 
-  "font": {
-    "family": "mansrope",
-    "weight": "600"
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background: var(--background);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 320px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-weight: var(--font-weight);
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .primary-btn {
+      width: 100%;
+      border: none;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--btn-radius);
+      font-size: var(--btn-font-size);
+      padding: var(--btn-padding);
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .secondary-btn {
+      width: 100%;
+      border: 2px solid var(--secondary);
+      background: transparent;
+      color: var(--secondary);
+      border-radius: var(--btn-radius);
+      font-size: var(--btn-font-size);
+      padding: var(--btn-padding);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>Login</h2>
+    <input type="text" placeholder="Email" />
+    <input type="password" placeholder="Password" />
+    <button class="primary-btn">Login</button>
+    <button class="secondary-btn">Create Account</button>
+  </div>
+
+  <!-- ✅ EMBEDDED TOKENS -->
+  <script id="tokens" type="application/json">
+  {
+    "primaryColor": "#ff0000",
+    "secondaryColor": "#FFB35D",
+    "backgroundColor": "#FFFFFF",
+    "textColor": "#212121",
+
+    "button": {
+      "borderRadius": "8px",
+      "fontSize": "16px",
+      "padding": "12px 24px"
+    },
+
+    "font": {
+      "family": "Manrope, sans-serif",
+      "weight": "600"
+    }
   }
-}
+  </script>
+
+  <script>
+    const tokens = JSON.parse(
+      document.getElementById("tokens").textContent
+    );
+
+    // Apply colors
+    document.documentElement.style.setProperty('--primary', tokens.primaryColor);
+    document.documentElement.style.setProperty('--secondary', tokens.secondaryColor);
+    document.documentElement.style.setProperty('--background', tokens.backgroundColor);
+    document.documentElement.style.setProperty('--text', tokens.textColor);
+
+    // Apply button styles
+    document.documentElement.style.setProperty('--btn-radius', tokens.button.borderRadius);
+    document.documentElement.style.setProperty('--btn-font-size', tokens.button.fontSize);
+    document.documentElement.style.setProperty('--btn-padding', tokens.button.padding);
+
+    // Apply font
+    document.documentElement.style.setProperty('--font-family', tokens.font.family);
+    document.documentElement.style.setProperty('--font-weight', tokens.font.weight);
+  </script>
+
+</body>
+</html>
