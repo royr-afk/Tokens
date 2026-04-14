@@ -1,5 +1,9 @@
 {
   "fontFamily": {
     "base": "'Manrope', sans-serif"
+  },
+  "font": {
+    "family": "manrope",
+    "weight": "600"
   }
 }
